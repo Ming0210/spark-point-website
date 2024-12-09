@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>火花點 Spark Point 行銷公司</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* 全局樣式 */
+    :root {
+      --primary-color: #f39c12;
+      --secondary-color: #e67e22;
+      --dark-color: #1a1a1a;
+      --light-color: #f5f5f5;
+      --transition: all 0.3s ease-in-out;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background: var(--light-color);
+      color: #333;
+      overflow-x: hidden;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    header {
+      background: var(--dark-color);
+      color: #fff;
+      padding: 1.5rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    nav {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 0.5rem 0;
+      transition: var(--transition);
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url(https://i.postimg.cc/6qxKdTVB/2024-11-29-213910.png) no-repeat center center/cover;
+      color: #fff;
+    }
+    .hero h2 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .cta-button {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .section {
+      padding: 6rem 2rem;
+    }
+    /* 關於我們區塊 */
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .about-content {
+      margin-top: 2rem;
+    }
+    .about-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .feature {
+      text-align: center;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .feature i {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    /* 服務項目區塊 */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+    .service-card i {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    .service-card h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+      .about-features,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>火花點 Spark Point</h1>
+    <nav>
+      <a href="#about">關於我們</a>
+      <a href="#services">服務項目</a>
+      <a href="#gallery">品牌展示</a>
+      <a href="#contact">聯絡我們</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <h2 data-aos="fade-up">我們將科技與溫暖結合，為餐飲品牌注入靈魂</h2>
+    <p data-aos="fade-up" data-aos-delay="200">在台北市最具代表性的餐飲空間中，我們打造出令人驚豔的品牌故事。</p>
+    <a href="https://www.instagram.com/p/C9zVDFrPLZU/" target="_blank" class="cta-button" data-aos="zoom-in" data-aos-delay="400">
+      了解更多 <i class="fas fa-arrow-right"></i>
+    </a>
+  </section>
+  <section class="section" id="about">
+    <div class="about-container" data-aos="fade-up">
+      <h3>關於火花點</h3>
+      <div class="about-content">
+        <p>火花點成立於2020年，是一間專注於餐飲品牌行銷的創意公司。我們相信每個品牌都有其獨特的故事，透過策略性思維與創意執行，我們協助品牌在競爭激烈的市場中脫穎而出。</p>
+        <div class="about-features">
+          <div class="feature">
+            <i class="fas fa-star"></i>
+            <h4>專業團隊</h4>
+            <p>擁有超過10位行銷策略專家與創意設計師</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-handshake"></i>
+            <h4>服務實績</h4>
+            <p>已成功協助超過50個餐飲品牌建立品牌形象</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-award"></i>
+            <h4>品質保證</h4>
+            <p>榮獲2023年度最佳餐飲行銷公司獎項</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 其他區塊省略，請參考完整檔案 -->
+</body>
+</html>
