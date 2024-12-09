@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>火花點 Spark Point 行銷公司</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>/* 關於我們區塊樣式 */
+.about-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 2rem;
+}
+html {
+scroll-behavior: smooth;
+}
+
+/* 為了補償固定標題的高度，讓捲動位置更準確 */
+#about, #services, #gallery, #contact {
+scroll-margin-top: 100px;
+}
+
+.about-content {
+margin-top: 2rem;
+}
+
+.about-features {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 2rem;
+margin-top: 3rem;
+}
+
+.feature {
+text-align: center;
+padding: 2rem;
+background: #fff;
+border-radius: 10px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.feature i {
+font-size: 2.5rem;
+color: var(--primary-color);
+margin-bottom: 1rem;
+}
+
+/* 聯絡我們區塊樣式 */
+.contact-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 2rem;
+}
+
+.contact-info {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 2rem;
+margin-top: 3rem;
+}
+
+.contact-item {
+text-align: center;
+padding: 2rem;
+background: #fff;
+border-radius: 10px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.contact-item i {
+font-size: 2.5rem;
+color: var(--primary-color);
+margin-bottom: 1rem;
+}
+
+/* 響應式設計補充 */
+@media (max-width: 768px) {
+.about-features,
+.contact-info {
+grid-template-columns: 1fr;
+}
+}
+
+:root {
+--primary-color: #f39c12;
+--secondary-color: #e67e22;
+--dark-color: #1a1a1a;
+--light-color: #f5f5f5;
+--transition: all 0.3s ease-in-out;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Arial', sans-serif;
+line-height: 1.6;
+background: var(--light-color);
+color: #333;
+overflow-x: hidden;
+}
+
+header {
+background: var(--dark-color);
+color: #fff;
+padding: 1.5rem;
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 1000;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav {
+margin-top: 1rem;
+display: flex;
+justify-content: center;
+gap: 2rem;
+}
+
+nav a {
+color: #fff;
+text-decoration: none;
+font-size: 1.1rem;
+padding: 0.5rem 0;
+transition: var(--transition);
+}
+
+.hero {
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 0 1rem;
+background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url(https://i.postimg.cc/6qxKdTVB/2024-11-29-213910.png) no-repeat center center/cover;
+color: #fff;
+}
+
+.hero h2 {
+font-size: 3.5rem;
+margin-bottom: 1.5rem;
+}
+
+.hero p {
+font-size: 1.2rem;
+margin-bottom: 2rem;
+}
+
+.cta-button {
+padding: 1rem 2rem;
+font-size: 1.2rem;
+background: var(--primary-color);
+color: #fff;
+border: none;
+border-radius: 50px;
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+}
+
+.section {
+padding: 6rem 2rem;
+}
+
+/* 服務項目樣式 */
+.services-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 2rem;
+max-width: 1200px;
+margin: 2rem auto;
+}
+
+.service-card {
+background: #fff;
+border-radius: 15px;
+padding: 2rem;
+text-align: center;
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+transition: var(--transition);
+cursor: pointer;
+}
+
+.service-card:hover {
+transform: translateY(-10px);
+}
+
+.service-card i {
+font-size: 3rem;
+color: var(--primary-color);
+margin-bottom: 1rem;
+}
+
+.service-card h4 {
+font-size: 1.5rem;
+margin-bottom: 1rem;
+}
+
+/* 服務詳情彈窗樣式 */
+.service-details {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background: #fff;
+padding: 2rem;
+border-radius: 15px;
+box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+z-index: 1001;
+max-width: 600px;
+width: 90%;
+display: none;
+}
+
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0,0,0,0.7);
+z-index: 1000;
+display: none;
+}
+
+.close-btn {
+position: absolute;
+top: 1rem;
+right: 1rem;
+font-size: 1.5rem;
+cursor: pointer;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+.services-grid {
+grid-template-columns: 1fr;
+}
+
+.hero h2 {
+font-size: 2.5rem;
+}
+
+nav {
+flex-direction: column;
+align-items: center;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<h1>火花點 Spark Point</h1>
+<nav>
+<a href="#about">關於我們</a>
+<a href="#services">服務項目</a>
+<a href="#gallery">品牌展示</a>
+<a href="#contact">聯絡我們</a>
+</nav>
+
+</header>
+
+<section class="hero">
+<h2 data-aos="fade-up">我們將科技與溫暖結合，為餐飲品牌注入靈魂</h2>
+<p data-aos="fade-up" data-aos-delay="200">在台北市最具代表性的餐飲空間中，我們打造出令人驚豔的品牌故事。</p>
+<a href="https://www.instagram.com/p/C9zVDFrPLZU/" target="_blank" class="cta-button" data-aos="zoom-in" data-aos-delay="400">
+了解更多 <i class="fas fa-arrow-right"></i>
+</a>
+</section>
+<section class="section" id="about">
+<div class="about-container" data-aos="fade-up">
+<h3>關於火花點</h3>
+<div class="about-content">
+  <p>火花點成立於2020年，是一間專注於餐飲品牌行銷的創意公司。我們相信每個品牌都有其獨特的故事，透過策略性思維與創意執行，我們協助品牌在競爭激烈的市場中脫穎而出。</p>
+  <div class="about-features">
+    <div class="feature">
+      <i class="fas fa-star"></i>
+      <h4>專業團隊</h4>
+      <p>擁有超過10位行銷策略專家與創意設計師</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-handshake"></i>
+      <h4>服務實績</h4>
+      <p>已成功協助超過50個餐飲品牌建立品牌形象</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-award"></i>
+      <h4>品質保證</h4>
+      <p>榮獲2023年度最佳餐飲行銷公司獎項</p>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="section" id="services">
+<h3 data-aos="fade-right">服務項目</h3>
+<div class="services-grid">
+<div class="service-card" data-aos="fade-up" onclick="showServiceDetails('brand')">
+<i class="fas fa-paint-brush"></i>
+<h4>品牌設計</h4>
+<p>打造獨特的品牌識別系統</p>
+</div>
+
+<div class="service-card" data-aos="fade-up" data-aos-delay="200" onclick="showServiceDetails('digital')">
+<i class="fas fa-mobile-alt"></i>
+<h4>數位行銷</h4>
+<p>全方位社群媒體經營</p>
+</div>
+
+<div class="service-card" data-aos="fade-up" data-aos-delay="400" onclick="showServiceDetails('event')">
+<i class="fas fa-calendar-alt"></i>
+<h4>活動策劃</h4>
+<p>創意活動企劃與執行</p>
+</div>
+
+<div class="service-card" data-aos="fade-up" onclick="showServiceDetails('photo')">
+<i class="fas fa-camera"></i>
+<h4>商業攝影</h4>
+<p>專業美食與空間攝影</p>
+</div>
+
+<div class="service-card" data-aos="fade-up" data-aos-delay="200" onclick="showServiceDetails('web')">
+<i class="fas fa-laptop-code"></i>
+<h4>網站建置</h4>
+<p>響應式網站設計與開發</p>
+</div>
+
+<div class="service-card" data-aos="fade-up" data-aos-delay="400" onclick="showServiceDetails('consult')">
+<i class="fas fa-comments"></i>
+<h4>品牌顧問</h4>
+<p>專業品牌策略諮詢</p>
+</div>
+</div>
+</section>
+
+<div class="overlay" id="overlay"></div>
+<div class="service-details" id="serviceDetails">
+<i class="fas fa-times close-btn" onclick="closeServiceDetails()"></i>
+<h3 id="serviceTitle"></h3>
+<div id="serviceContent"></div>
+</div>
+
+<section class="section" id="gallery">
+<h3 data-aos="fade-down">品牌展示</h3>
+<div class="gallery">
+<img src="https://i.postimg.cc/3JyjyRSk/caption.jpg1" alt="品牌空間 1" data-aos="zoom-in">
+<img src="https://i.postimg.cc/ZnSBsbPL/2024-12-03-095238.png" alt="AW Wine" data-aos="zoom-in">
+<img src="https://i.postimg.cc/xjNy88Fc/2023-10-15.jpg" alt="品牌空間 3" data-aos="zoom-in">
+</div>
+</section>
+
+<section class="section" id="contact">
+<div class="contact-container" data-aos="fade-up">
+<h3>聯絡我們</h3>
+<div class="contact-info">
+  <div class="contact-item">
+    <i class="fas fa-map-marker-alt"></i>
+    <h4>公司地址</h4>
+    <p>台北市信義區松仁路100號10樓</p>
+  </div>
+  <div class="contact-item">
+    <i class="fas fa-phone"></i>
+    <h4>聯絡電話</h4>
+    <p>02-2345-6789</p>
+  </div>
+  <div class="contact-item">
+    <i class="fas fa-envelope"></i>
+    <h4>電子郵件</h4>
+    <p>contact@sparkpoint.com.tw</p>
+  </div>
+  <div class="contact-item">
+    <i class="fas fa-clock"></i>
+    <h4>營業時間</h4>
+    <p>週一至週五 09:00-18:00</p>
+  </div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2024 火花點 Spark Point. All Rights Reserved.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({
+duration: 1000,
+once: true
+});
+
+const serviceInfo = {
+brand: {
+title: "品牌設計服務",
+content: `
+<ul>
+  <li>品牌識別系統設計</li>
+  <li>商標設計與應用</li>
+  <li>包裝設計</li>
+  <li>菜單設計</li>
+  <li>空間視覺設計</li>
+  <li>品牌手冊製作</li>
+</ul>
+`
+},
+digital: {
+title: "數位行銷服務",
+content: `
+<ul>
+  <li>社群媒體經營策略</li>
+  <li>內容企劃與製作</li>
+  <li>KOL合作企劃</li>
+  <li>數位廣告投放</li>
+  <li>成效分析與優化</li>
+  <li>線上活動策劃</li>
+</ul>
+`
+},
+event: {
+title: "活動策劃服務",
+content: `
+<ul>
+  <li>開幕活動企劃</li>
+  <li>品牌快閃活動</li>
+  <li>媒體餐會</li>
+  <li>主題派對策劃</li>
+  <li>節慶活動企劃</li>
+  <li>跨品牌合作活動</li>
+</ul>
+`
+},
+photo: {
+title: "商業攝影服務",
+content: `
+<ul>
+  <li>美食攝影</li>
+  <li>空間攝影</li>
+  <li>商品攝影</li>
+  <li>活動紀錄</li>
+  <li>形象照拍攝</li>
+  <li>短視頻拍攝</li>
+</ul>
+`
+},
+web: {
+title: "網站建置服務",
+content: `
+<ul>
+  <li>響應式網站設計</li>
+  <li>電商網站建置</li>
+  <li>訂位系統開發</li>
+  <li>會員系統建置</li>
+  <li>網站維護更新</li>
+  <li>SEO優化</li>
+</ul>
+`
+},
+consult: {
+title: "品牌顧問服務",
+content: `
+<ul>
+  <li>品牌定位諮詢</li>
+  <li>市場分析</li>
+  <li>競品分析</li>
+  <li>品牌策略規劃</li>
+  <li>行銷策略制定</li>
+  <li>經營診斷與建議</li>
+</ul>
+`
+}
+};
+
+function showServiceDetails(service) {
+const details = document.getElementById('serviceDetails');
+const overlay = document.getElementById('overlay');
+const title = document.getElementById('serviceTitle');
+const content = document.getElementById('serviceContent');
+
+title.textContent = serviceInfo[service].title;
+content.innerHTML = serviceInfo[service].content;
+
+details.style.display = 'block';
+overlay.style.display = 'block';
+}
+
+function closeServiceDetails() {
+const details = document.getElementById('serviceDetails');
+const overlay = document.getElementById('overlay');
+
+details.style.display = 'none';
+overlay.style.display = 'none';
+}
+
+document.getElementById('overlay').addEventListener('click', closeServiceDetails);
+</script>
+// 為所有導航連結添加點擊事件處理
+document.querySelectorAll('nav a').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+  e.preventDefault();
+  const targetId = this.getAttribute('href');
+  const targetElement = document.querySelector(targetId);
+  
+  if (targetElement) {
+    targetElement.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+});
+});
+</body>
+</html>
